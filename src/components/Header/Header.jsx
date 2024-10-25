@@ -4,66 +4,66 @@ import './Header.css';
 
 const navLinks = [
     {
-        dispay: 'Home',
-        url:''
+        display: 'Home',
+        url:'#',
     },
 
     {
-        dispay: 'About',
-        url:''
+        display: 'About',
+        url:'#',
     },
 
     {
-        dispay: 'Courses',
-        url:''
+        display: 'Courses',
+        url:'#',
     },
 
     {
-        dispay: 'Pages',
-        url:''
+        display: 'Pages',
+        url:'#',
     },
 
     {
-        dispay: 'Blog',
-        url:''
+        display: 'Blog',
+        url:'#',
     },
-]
+];
 
 const Header = () => {
-  return <section>
+  return( 
+  <header className="header">
     <Container>
-        <div className="navigation d-flex .align-items-center justify-content-between">
+        <div className="navigation d-flex align-items-centre justify-content-between">
             <div className="logo">
-                <h2><i class="ri-pantone-line"></i>Learners</h2>
+                <h2 className="d-flex align-items-centre">
+                    <i class="ri-pantone-line"></i>Learners.</h2>
             </div>
 
-            <div className="nav">
+            <div className="nav d-flex align-items-centre gap-5">
                 <div className="nav_menu">
                     <ul className="nav_list">
 
-                        {
-                            navLinks.map((item,index)=>(
+                        {navLinks.map((item,index) => (
                                 <li key={index} className="nav_item">
                                     <a href={item.url}>{item.display}</a>
                                 </li>
-                            ))
-                        }
-                        
+                            ))} 
                     </ul>
                 </div>
                 <div className="nav_right">
-                    <p><i class="ri-phone-line"></i>+94 70 2199 588</p>
-                    <p>About</p>        
-                    <p>Courses</p>
-                    <p>Pages</p>
-                    <p>Blog</p>
+                    <p className="mb-0 d-flex align-items-center gap-2">
+                        <i class="ri-phone-line"></i> +94 70 2199 588
+                    </p>
                 </div>
+            </div>
+            <div className="moblie_menu">
+                <span><i class="ri-menu-line"></i></span>
             </div>
         </div>
     </Container>
-  </section>
-    
+  </header>
+  );
   
-}
+};
 
-export default Header
+export default Header;
