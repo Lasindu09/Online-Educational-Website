@@ -1,69 +1,73 @@
-import React from 'react';
-import { Container } from 'reactstrap';
-import './Header.css';
+import React, { useRef } from "react";
+import { Container } from "reactstrap";
+import "./Header.css";
 
 const navLinks = [
-    {
-        display: 'Home',
-        url:'#',
-    },
+  {
+    display: "Home",
+    url: "#",
+  },
+  {
+    display: "About",
+    url: "#",
+  },
 
-    {
-        display: 'About',
-        url:'#',
-    },
-
-    {
-        display: 'Courses',
-        url:'#',
-    },
-
-    {
-        display: 'Pages',
-        url:'#',
-    },
-
-    {
-        display: 'Blog',
-        url:'#',
-    },
+  {
+    display: "Courses",
+    url: "#",
+  },
+  {
+    display: "Pages",
+    url: "#",
+  },
+  {
+    display: "Blog",
+    url: "#",
+  },
 ];
 
 const Header = () => {
-  return( 
-  <header className="header">
-    <Container>
-        <div className="navigation d-flex align-items-centre justify-content-between">
-            <div className="logo">
-                <h2 className="d-flex align-items-centre">
-                    <i class="ri-pantone-line"></i>Learners.</h2>
+  const menuRef = useRef();
+
+  const menuToggle = () => menuRef.current.classList.toggle("active__menu");
+
+  return (
+    <header className="header">
+      <Container>
+        <div className="navigation d-flex align-items-center justify-content-between">
+          <div className="logo">
+            <h2 className=" d-flex align-items-center gap-1">
+              <i class="ri-pantone-line"></i> Learners.
+            </h2>
+          </div>
+
+          <div className="nav d-flex align-items-center gap-5">
+            <div className="nav__menu" ref={menuRef} onClick={menuToggle}>
+              <ul className="nav__list">
+                {navLinks.map((item, index) => (
+                  <li key={index} className="nav__item">
+                    <a href={item.url}>{item.display}</a>
+                  </li>
+                ))}
+              </ul>
             </div>
 
-            <div className="nav d-flex align-items-centre gap-5">
-                <div className="nav_menu">
-                    <ul className="nav_list">
+            <div className="nav__right">
+              <p className="mb-0 d-flex align-items-center gap-2">
+                <i class="ri-phone-line"></i> +94 70 219 9588
+              </p>
+            </div>
+          </div>
 
-                        {navLinks.map((item,index) => (
-                                <li key={index} className="nav_item">
-                                    <a href={item.url}>{item.display}</a>
-                                </li>
-                            ))} 
-                    </ul>
-                </div>
-                <div className="nav_right">
-                    <p className="mb-0 d-flex align-items-center gap-2">
-                        <i class="ri-phone-line"></i> +94 70 2199 588
-                    </p>
-                </div>
-            </div>
-            <div className="moblie_menu">
-                <span><i class="ri-menu-line"></i></span>
-            </div>
+          <div className="mobile__menu">
+            <span>
+              <i class="ri-menu-line" onClick={menuToggle}></i>
+            </span>
+          </div>
         </div>
-    </Container>
-  </header>
+      </Container>
+    </header>
   );
-  
 };
 
 export default Header;
